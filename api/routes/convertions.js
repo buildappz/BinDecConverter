@@ -9,9 +9,6 @@ router.post("/", convertions.create);
 // Retrieve all Convertionss
 router.get("/", convertions.findAll);
 
-// Retrieve all published Convertionss
-router.get("/published", convertions.findAllPublished);
-
 // Retrieve a single Convertions with id
 router.get("/:id", convertions.findOne);
 
@@ -19,10 +16,10 @@ router.get("/:id", convertions.findOne);
 router.put("/:id", convertions.update);
 
 // Delete a Convertions with id
-router.delete("/:id", convertions.delete);
+//router.delete("/:id", convertions.delete);
 
 // Create a new Convertions
-router.delete("/", convertions.deleteAll);
+//router.delete("/", convertions.deleteAll);
 
 
 module.exports = router;
