@@ -1,5 +1,6 @@
 const db = require("../models");
 const Convertion = db.convertions;
+
 const Op = db.Sequelize.Op;
 
 const convertNumber = (isBinary, text) => {
@@ -26,7 +27,7 @@ const convertNumber = (isBinary, text) => {
 // Create and Save a new Convertion
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.input) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -38,9 +39,9 @@ exports.create = (req, res) => {
       owner: req.body.owner,
       input: req.body.input,
       convertion: req.body.convertion,
-      output: convertNumber(req.body.convertion,req.body.input)
+      output: convertNumber(!!+req.body.convertion,req.body.input).output
     };
-  
+    //console.log('Convertion model:', convertion);  
     // Save Convertion in the database
     Convertion.create(convertion)
       .then(data => {
